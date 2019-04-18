@@ -28,12 +28,12 @@ const BlogPage = () => (
       contentfulBlog: {
         title,
         date,
-        content: { 
-          childMarkdownRemark: { html }
-        },
         image: {
           file: { url },
           description,
+        },
+        content: { 
+          childContentfulRichText: { html }
         }
       }
     }) => (
