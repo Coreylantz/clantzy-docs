@@ -43,7 +43,10 @@ const BlogPage = () => (
         <img src={url} alt={description} />
         <div dangerouslySetInnerHTML={{__html: html}} />
 
-        <form name="contact" netlify>
+        <form name="contact"
+              method="post"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field">
           <p>
             <label>Name <input type="text" name="name" /></label>
           </p>
