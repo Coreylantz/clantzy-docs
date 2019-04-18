@@ -45,8 +45,7 @@ const BlogPage = () => (
 
         <form name="contact"
               method="post"
-              data-netlify="true"
-              data-netlify-honeypot="bot-field">
+              data-netlify="true">
           <p>
             <label>Name <input type="text" name="name" /></label>
           </p>
