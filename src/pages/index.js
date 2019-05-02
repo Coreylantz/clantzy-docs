@@ -1,5 +1,6 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby";
+import Layout from "../components/layout";
 
 const HomePage = () => (
   <StaticQuery
@@ -36,12 +37,12 @@ const HomePage = () => (
         }
       }
     }) => (
-      <div>
+      <Layout>
         <h1>{title}</h1>
         <small>Created on {date}</small>
         <img src={url} alt={description} />
         <div dangerouslySetInnerHTML={{__html: html}} />
-      </div>
+      </Layout>
     )}
   />
 )

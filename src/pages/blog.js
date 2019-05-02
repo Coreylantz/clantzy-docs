@@ -1,64 +1,34 @@
 import React from "react"
-import { StaticQuery, graphql } from "gatsby";
+import { graphql } from "gatsby";
+import { BlogList } from "../components/blogList";
+import Layout from "../components/layout";
 
+const BlogListPage = ({
+  data: {
+    allContentfulBlogPost: { edges },
+  },
+ }) => {
+  const Posts = edges
+    .map((edge, index) => <BlogList key={index} post={edge.node} />)
 
-const BlogPage = () => (
-  <StaticQuery
-    query={graphql`
-      query BlogPage {
-        contentfulBlog {
-          title
-          date
-          image {
-            title
-            file {
-              url
-            }
-            description
-          }
-          content {
-            childContentfulRichText {
-              html
-            }
-          }
-        }
+    return (
+    <Layout>
+      <h1>Blogs</h1>
+      <ul>{Posts}</ul>
+    </Layout>)
+ }
+
+export default BlogListPage;
+
+export const pageQuery = graphql`
+ query {
+  allContentfulBlogPost {
+    edges {
+      node {
+        title
+        slug
       }
-    `}
-    render={({
-      contentfulBlog: {
-        title,
-        date,
-        image: {
-          file: { url },
-          description,
-        },
-        content: { 
-          childContentfulRichText: { html }
-        }
-      }
-    }) => (
-      <div>
-        <h1>{title}</h1>
-        <small>Created on {date}</small>
-        <img src={url} alt={description} />
-        <div dangerouslySetInnerHTML={{__html: html}} />
-
-        <form name="contact"
-              method="post"
-              data-netlify="true">
-          <p>
-            <label>Name <input type="text" name="name" /></label>
-          </p>
-          <p>
-            <label>Email <input type="email" name="email" /></label>
-          </p>
-          <p>
-            <button type="submit">Send</button>
-          </p>
-        </form>
-      </div>
-    )}
-  />
-);
-
-export default BlogPage;
+    }
+  }
+}
+`
