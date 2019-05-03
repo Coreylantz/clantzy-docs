@@ -4,6 +4,10 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+
+  a {
+    color: white;
+  }
 }
 
 header {
@@ -28,9 +32,4 @@ footer {
 
 ul {
   margin: 0;
-}
-
-a {
-  // color: $link-color;
-  color: white;
 }
