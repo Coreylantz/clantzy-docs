@@ -1,0 +1,36 @@
+@import '../settings/variables';
+
+.gWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  align-items: center;
+  background: $primary-color;
+  display: flex;
+  justify-content: space-between;
+  padding: $m-space;
+}
+
+main {
+  flex: 1;
+  max-width: 120rem;
+  margin: auto;
+}
+
+footer {
+  background: $primary-color;
+  color: white;
+  padding: $m-space;
+}
+
+ul {
+  margin: 0;
+}
+
+a {
+  // color: $link-color;
+  color: white;
+}

@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby";
+import styles from "../styles/layouts/layout.module.scss";
 
 const ListLink = props => (
   <li style={{ display: `inline-block`, marginRight: `1rem` }}>
@@ -7,19 +8,28 @@ const ListLink = props => (
   </li>
 )
 
+// TODO turn header, footer into component
+
 export default ({ children }) => (
-  <div style={{ margin: `3rem auto`, maxWidth: 1000, padding: `0 1rem` }}>
-    <header style={{ marginBottom: `1.5rem` }}>
+  <div className={styles.gWrapper}>
+    <header>
       <Link to="/" style={{ textShadow: `none`, backgroundImage: `none` }}>
         <h3 style={{ display: `inline` }}>MySweetSite</h3>
       </Link>
-      <ul style={{ listStyle: `none`, float: `right` }}>
-        <ListLink to="/">Home</ListLink>
-        <ListLink to="/about/">About</ListLink>
-        <ListLink to="/contact/">Contact</ListLink>
-        <ListLink to="/blog/">Blog</ListLink>
-      </ul>
+      <nav>
+        <ul>
+          <ListLink to="/">Home</ListLink>
+          <ListLink to="/about/">About</ListLink>
+          <ListLink to="/contact/">Contact</ListLink>
+          <ListLink to="/blog/">Blog</ListLink>
+        </ul>
+      </nav>
     </header>
-    {children}
+    <main>
+      {children}
+    </main>
+    <footer>
+      Made by Corey
+    </footer>
   </div>
 )

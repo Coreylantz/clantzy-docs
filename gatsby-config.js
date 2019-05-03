@@ -10,6 +10,7 @@ module.exports = {
   plugins: [
     "gatsby-transformer-remark",
     `@contentful/gatsby-transformer-contentful-richtext`,
+    `gatsby-plugin-sass`,
     {
       resolve: "gatsby-source-contentful",
       options: {
