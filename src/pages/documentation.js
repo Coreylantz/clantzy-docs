@@ -1,28 +1,29 @@
 import React from "react"
 import { graphql } from "gatsby";
-import { BlogList } from "../components/blogList";
+import { DocList } from "../components/docList";
 import Layout from "../components/layout";
 
-const BlogListPage = ({
+const DocumentationListPage = ({
   data: {
-    allContentfulBlogPost: { edges },
+    allContentfulDocumentationPost: { edges },
   },
  }) => {
   const Posts = edges
-    .map((edge, index) => <BlogList key={index} post={edge.node} />)
+    .map((edge, index) => <DocList key={index} post={edge.node} />)
 
     return (
     <Layout>
-      <h1>Blogs</h1>
+      <h1>Documentation</h1>
+      <h2>User Guides</h2>
       <ul>{Posts}</ul>
     </Layout>)
  }
 
-export default BlogListPage;
+export default DocumentationListPage;
 
 export const pageQuery = graphql`
  query {
-  allContentfulBlogPost {
+  allContentfulDocumentationPost {
     edges {
       node {
         title

@@ -2,37 +2,33 @@ const path = require(`path`)
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const docPost = path.resolve(`./src/templates/doc-post.js`)
   return graphql(`
-    {
-      allContentfulBlogPost {
-        edges {
-          node {
-            title
-            slug
-            date(formatString: "YYYY MMMM DD")
-            image {
-              title
-              file {
-                url
-              }
-              description
-            }
-            content {
-              childContentfulRichText {
-                html
-              }
+  {
+    allContentfulDocumentationPost {
+      edges {
+        node {
+          id
+          title
+          slug
+          author {
+            name
+          }
+          summary {
+            childMarkdownRemark {
+              html
             }
           }
         }
       }
-    }  
+    }
+  }    
   `).then(result => {
     if (result.errors) {
       throw result.errors
     }
     // Create blog posts pages
-    const posts = result.data.allContentfulBlogPost.edges
+    const posts = result.data.allContentfulDocumentationPost.edges
 
     posts.forEach((post, index) => {
       // const previous = index === posts.length - 1 ? null : posts[index + 1].node;
@@ -40,7 +36,7 @@ exports.createPages = ({ graphql, actions }) => {
       
       createPage({
         path: post.node.slug,
-        component: blogPost,
+        component: docPost,
         context: {
           // Data passed to context is available
           // in page queries as GraphQL variables.

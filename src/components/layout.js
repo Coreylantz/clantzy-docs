@@ -14,14 +14,11 @@ export default ({ children }) => (
   <div className={styles.gWrapper}>
     <header>
       <Link to="/" style={{ textShadow: `none`, backgroundImage: `none` }}>
-        <h3 style={{ display: `inline` }}>MySweetSite</h3>
+        <h3 style={{ display: `inline` }}>Clantzy Docs</h3>
       </Link>
       <nav>
         <ul>
-          <ListLink to="/">Home</ListLink>
-          <ListLink to="/about/">About</ListLink>
-          <ListLink to="/contact/">Contact</ListLink>
-          <ListLink to="/blog/">Blog</ListLink>
+          <ListLink to="/documentation/">Documentation</ListLink>
         </ul>
       </nav>
     </header>

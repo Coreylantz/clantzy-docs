@@ -39,9 +39,13 @@ const HomePage = () => (
     }) => (
       <Layout>
         <h1>{title}</h1>
-        <small>Created on {date}</small>
+        <div>
+          <small>Created on {date}</small>
+        </div>
         <img src={url} alt={description} />
-        <div dangerouslySetInnerHTML={{__html: html}} />
+        <div>
+          <div dangerouslySetInnerHTML={{__html: html}} />
+        </div>
       </Layout>
     )}
   />
