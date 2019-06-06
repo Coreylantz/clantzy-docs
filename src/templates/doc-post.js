@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
+import { FieldTable } from "../components/field-table";
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -18,7 +19,8 @@ class BlogPostTemplate extends React.Component {
           <div dangerouslySetInnerHTML={{__html: step.stepInstructions.childContentfulRichText.html}} />
           { stepImage }
         </li>)
-      });
+    });
+
     const summary = post.summary.childMarkdownRemark.html;
     const implementationNotes = post.implementationNotes.childMarkdownRemark.html;
     return (
@@ -30,6 +32,9 @@ class BlogPostTemplate extends React.Component {
         </div>
         <div dangerouslySetInnerHTML={{__html: summary}} />
         <code dangerouslySetInnerHTML={{__html: implementationNotes}} />
+        {post.fieldTable !== null &&
+          <FieldTable table={ post.fieldTable } />
+        }
         <ul>{ renderSteps }</ul>
       </Layout>
     )
@@ -55,6 +60,11 @@ export const pageQuery = graphql`
         childMarkdownRemark {
           html
         }
+      }
+      fieldTable {
+        fieldName
+        inputType
+        description
       }
       steps {
       	stepTitle
